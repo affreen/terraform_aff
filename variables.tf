@@ -48,8 +48,26 @@ variable "address_space" {
 
 }
 
-variable "subnet_addr_prfx" {
-  type        = list(string)
-  description = "Address space of the subnets inside VNETs"
-}
+#variable "subnet_addr_prfx" {
+#  type        = list(string)
+#  description = "Address space of the subnets inside VNETs"
+#}
 
+variable "subnet_list" {
+  type = map(any)
+  description = "List of subnets"
+  default = {
+    subnet_01 = {
+             name = "subnet_01",
+             ip= "10.0.1.0/24"
+    },
+    subnet_02 = {
+             name = "subnet_02",
+             ip= "10.0.2.0/24"
+    },
+    subnet_03 = {
+             name = "subnet_03",
+             ip= "10.0.3.0/24"
+    }
+  }
+}

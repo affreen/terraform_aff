@@ -28,11 +28,13 @@ module "create_vnet" {
 }
 
 module "create_subnet" {
+  for_each = var.subnet_list
   source               = "./all_terraform_modules/subnets"
-  base_name            = var.base_name
+  base_name            = each.value["name"]
   resource_group_name  = module.create_resource_group.resource_group_name_out
   virtual_network_name = module.create_vnet.vnet_out
-  subnet_addr_prfx     = var.subnet_addr_prfx
+  subnet_addr_prfx     = [each.value["ip"]]
+  network_security_group_id = module.create_nsg.nsg_out
 }
 
 module "create_nsg" {
@@ -44,7 +46,5 @@ module "create_nsg" {
   nsg_rules = var.nsg_rules
 
 }
-resource "azurerm_subnet_network_security_group_association" "test_association" {
-  subnet_id                 = module.create_subnet.subnet_out
-  network_security_group_id = module.create_nsg.nsg_out
-}
+
+
