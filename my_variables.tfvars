@@ -1,6 +1,6 @@
-base_name                 = "affreen_jha"
-location                  = "eastus"
-network_security_grp_name = "my_first_rule"
+base_name = "affreen_jha"
+location  = "eastus"
+#network_security_grp_name = "my_first_rule"
 nsg_rules = [{
   name                       = "AllowWebIn"
   priority                   = 100
@@ -24,3 +24,5 @@ nsg_rules = [{
     destination_address_prefix = "*"
   }
 ]
+address_space    = ["10.0.0.0/16"]
+subnet_addr_prfx = ["10.0.1.0/24"]

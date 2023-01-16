@@ -9,11 +9,11 @@ variable "location" {
   description = "Location of the deployment"
 
 }
-variable "network_security_grp_name" {
-  type        = string
-  description = "Network security group name"
-
-}
+#variable "network_security_grp_name" {
+#  type        = string
+#  description = "Network security group name"
+#
+#}
 #variable "all_networks" {
 #    type = list
 #    description = "Network address of the VNETs"
@@ -34,3 +34,22 @@ variable "nsg_rules" {
   }))
   description = "NSG rules and its settings"
 }
+
+variable "all_networks" {
+  type        = list(any)
+  description = "Network address of the VNETs"
+  default     = ["192.168.0.0/16", "10.0.0.0/16"]
+
+}
+
+variable "address_space" {
+  type        = list(string)
+  description = "Address space of the VNET"
+
+}
+
+variable "subnet_addr_prfx" {
+  type        = list(string)
+  description = "Address space of the subnets inside VNETs"
+}
+

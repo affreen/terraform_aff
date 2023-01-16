@@ -16,11 +16,11 @@ variable "resource_group_name" {
 
 }
 
-variable "network_security_grp_name" {
-    type = string
-    description = "Network security group name"
-
-}
+#variable "network_security_grp_name" {
+#    type = string
+#    description = "Network security group name"
+#
+#}
 
 variable "nsg_rules" {
  type = list(object({
