@@ -9,17 +9,7 @@ variable "location" {
   description = "Location of the deployment"
 
 }
-#variable "network_security_grp_name" {
-#  type        = string
-#  description = "Network security group name"
-#
-#}
-#variable "all_networks" {
-#    type = list
-#    description = "Network address of the VNETs"
-#    default = ["192.168.0.0/16", "10.0.0.0/16"]
-#
-#}
+
 variable "nsg_rules" {
   type = list(object({
     name                       = string
@@ -54,20 +44,43 @@ variable "address_space" {
 #}
 
 variable "subnet_list" {
-  type = map(any)
+  type        = map(any)
   description = "List of subnets"
   default = {
     subnet_01 = {
-             name = "subnet_01",
-             ip= "10.0.1.0/24"
+      name = "subnet_01",
+      ip   = "10.0.1.0/24"
     },
     subnet_02 = {
-             name = "subnet_02",
-             ip= "10.0.2.0/24"
+      name = "subnet_02",
+      ip   = "10.0.2.0/24"
     },
     subnet_03 = {
-             name = "subnet_03",
-             ip= "10.0.3.0/24"
+      name = "subnet_03",
+      ip   = "10.0.3.0/24"
     }
+  }
+}
+
+variable "vnet_list" {
+  type        = map(any)
+  description = "List of subnets"
+  default = {
+    vnet_01 = {
+      name = "vnet_01_spoke",
+      ip   = "10.0.0.0/16"
+
+    },
+    vnet_02 = {
+      name = "vnet_02_spoke",
+      ip   = "192.168.0.0/16"
+
+    }
+    vnet_03 = {
+      name = "vnet_hub",
+      ip   = "172.16.0.0/16"
+
+    }
+
   }
 }
