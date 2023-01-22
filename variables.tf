@@ -67,19 +67,20 @@ variable "vnet_list" {
   description = "List of subnets"
   default = {
     vnet_01 = {
-      name = "vnet_01_spoke",
-      ip   = "10.0.0.0/16"
+      name      = "vnet_01_spoke",
+      ip        = "10.0.0.0/16",
+      subnet_ip = "10.0.1.0/24"
 
     },
     vnet_02 = {
-      name = "vnet_02_spoke",
-      ip   = "192.168.0.0/16"
-
-    }
+      name      = "vnet_02_spoke",
+      ip        = "192.168.0.0/16",
+      subnet_ip = "192.168.1.0/24"
+    },
     vnet_03 = {
-      name = "vnet_hub",
-      ip   = "172.16.0.0/16"
-
+      name      = "vnet_hub",
+      ip        = "172.16.0.0/16",
+      subnet_ip = "172.16.1.0/24"
     }
 
   }

@@ -18,3 +18,11 @@ variable "address_space" {
   description = "Address space of the VNET"
 
 }
+variable "subnet_addr_prfx" {
+  type = list(string)
+  description = "Address prefix of the subnets inside the VNETs"
+}
+variable "network_security_group_id" {
+  type = string
+  description = "Address prefix of the subnets inside the VNETs"
+}
