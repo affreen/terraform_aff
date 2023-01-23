@@ -13,3 +13,4 @@ module "subnets" {
   subnet_addr_prfx=var.subnet_addr_prfx
   network_security_group_id = var.network_security_group_id
 }
+
