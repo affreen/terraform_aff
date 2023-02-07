@@ -91,6 +91,7 @@ resource "azurerm_virtual_network_peering" "spoke_1_to_hub" {
   virtual_network_name      = "${lookup(lookup(var.vnet_list, "vnet_01"), "name")}_VNET"
   remote_virtual_network_id = data.azurerm_virtual_network.hub.id
   use_remote_gateways       = true
+  allow_forwarded_traffic = true
 }
 
 resource "azurerm_virtual_network_peering" "hub_to_spoke_1" {
@@ -99,6 +100,7 @@ resource "azurerm_virtual_network_peering" "hub_to_spoke_1" {
   virtual_network_name      = "${lookup(lookup(var.vnet_list, "vnet_03"), "name")}_VNET"
   remote_virtual_network_id = data.azurerm_virtual_network.spoke_1.id
   allow_gateway_transit     = true
+  allow_forwarded_traffic = true
 }
 
 resource "azurerm_virtual_network_peering" "spoke_2_to_hub" {
@@ -107,6 +109,7 @@ resource "azurerm_virtual_network_peering" "spoke_2_to_hub" {
   virtual_network_name      = "${lookup(lookup(var.vnet_list, "vnet_02"), "name")}_VNET"
   remote_virtual_network_id = data.azurerm_virtual_network.hub.id
   use_remote_gateways       = true
+  allow_forwarded_traffic = true
 }
 
 resource "azurerm_virtual_network_peering" "hub_to_spoke_2" {
@@ -115,4 +118,5 @@ resource "azurerm_virtual_network_peering" "hub_to_spoke_2" {
   virtual_network_name      = "${lookup(lookup(var.vnet_list, "vnet_03"), "name")}_VNET"
   remote_virtual_network_id = data.azurerm_virtual_network.spoke_2.id
   allow_gateway_transit     = true
+  allow_forwarded_traffic = true
 }
